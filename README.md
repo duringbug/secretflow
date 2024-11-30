@@ -3,6 +3,7 @@
 docker compose -p sf-project up -d --build
 ssh root@localhost -p 2222
 ```
+可以通过Vscode的ssh连接
 
 密码在`docker-compose.yml`中设置，初始`123456`
 
