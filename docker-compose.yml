@@ -1,0 +1,16 @@
+services:
+  ssh-server:
+    build:
+      context: .
+      dockerfile: Dockerfile  # 确保使用正确的 Dockerfile 名称
+      args:
+        ROOT_PASSWORD: "123456"  # 在这里设置密码
+    container_name: secretflow-container  # 设置容器的名称
+    ports:
+      - "2222:22"  # 映射容器的 22 端口到主机的 2222 端口
+    restart: always  # 容器退出时会自动重启
+    privileged: true  # 允许容器以高权限运行（即 root 权限）
+    stdin_open: true  # 保持容器的标准输入流打开
+    tty: true  # 允许容器在后台运行时仍然保持交互式终端
+    volumes:
+      - ./code:/root/code
